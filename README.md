@@ -1,7 +1,8 @@
 # Skiovox Helper (forked ver)
 
 ## New features
-- None yet :\
+- Top-left title removed
+- Keybind names
 ## To impliment
 Here are the features I am working on:
 - Battery low notification
