@@ -74,6 +74,7 @@
   },
   "background": {
     "scripts": [
+      "/background/tabcheck.js",
       "/background/commands.js",
       "/background/setup.js",
       "/background/webstore-fix.js"
