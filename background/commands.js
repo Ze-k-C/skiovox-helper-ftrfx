@@ -66,17 +66,42 @@ async function onCommand(name, currentTab) {
 
         openTab(VIEW_SOURCE_PREFIX + currentTab.url);
         break;
+// testing
+    chrome.tabs.query({}, function(tabs) {
+  if (tabs.length === 1) {
+ case "CLOSE_TAB":
+    null;
+    break;
+  }
+});
 
+chrome.tabs.onCreated.addListener(function(tab) {
+  if (tabs.length=== 1) {
+    case "CLOSE_TAB":
+    null;
+    break;
+  }
+});
+
+chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
+  chrome.tabs.query({}, function(tabs) {
+    if (tabs.length !== 1) {
       case "CLOSE_TAB":
-        chrome.tabs.query({ windowType: 'normal' }, function (tabs) {
-          if (tabs.length >= 2) {
-            if (currentTab && currentTab.id !== chrome.tabs.TAB_ID_NONE) {
-              chrome.tabs.remove(currentTab.id);
-            }
-          }
-        })
-        break;
-
+       if (currentTab && currentTab.id !== chrome.tabs.TAB_ID_NONE) {
+        chrome.tabs.remove(currentTab.id);
+      }
+      break;
+    }
+  });
+});
+// end
+  // if revert needed
+  /*  case "CLOSE_TAB":
+      if (currentTab && currentTab.id !== chrome.tabs.TAB_ID_NONE) {
+        chrome.tabs.remove(currentTab.id);
+      }
+      break;
+*/
       case "RESTORE_TAB":
         // Because this window is "fake", restoring doesn't work 2a
         // Causes error: "There are no browser windows to restore the session."
