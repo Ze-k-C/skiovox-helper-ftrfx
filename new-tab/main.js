@@ -25,6 +25,7 @@ let [
     theme,
     colorChange,
     backgroundChange,
+    audio,
     wifi,
     bluetooth,
     files,
@@ -39,6 +40,10 @@ let batterySlider = document.querySelector('.batterySlider')
 let batteryTime = document.querySelector('.batteryTime')
 
 version.textContent = "v" + chrome.runtime.getManifest().version
+
+audio.addEventListener('click', () => {
+    chrome.tabs.create({ url: AUDIO_URL })
+})
 
 wifi.addEventListener('click', () => {
     chrome.tabs.create({ url: WIFI_URL })
